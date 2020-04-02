@@ -36,7 +36,7 @@ interface State {
   change :boolean;
 }
 
-class Home extends Component<Props, State> {
+class CartScreen extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
@@ -63,7 +63,7 @@ class Home extends Component<Props, State> {
   static navigationOptions = ({navigation }) => {
 
    return {
-    title: 'Ürünler',
+    title: 'Sepet',
     headerTintColor: 'white',
     headerStyle: {
       backgroundColor: colors.headerColor,
@@ -76,20 +76,6 @@ class Home extends Component<Props, State> {
       },
 
     },
-  headerRight: 
-  (navigation.state.params && navigation.state.params.cart ) ? <TouchableOpacity onPress={()=> navigation.navigate('Cart')}
-  style={{marginRight:10}}><LinearGradient 
-  start={{x :0, y:0.5}}
-  end={{x:1, y:0.5}}
-  colors={['#EFFAF7', '#A9CDCC']}
-  style={{borderRadius: 5}}><View style={{borderWidth:0,borderRadius:5,padding:5,flexDirection:'row',backgroundColor:'white',margin:1}}>
-   <Icon style={{color:colors.iconColor}} name="cart"></Icon>
-  
-  <Text style={{alignSelf:'center',marginLeft:10,color:colors.textColor}}>{navigation.state.params.cart} TL</Text>
-  </View>
-  </LinearGradient>
- 
-  </TouchableOpacity> : null
    }
   };
   renderPlusButton(){
@@ -102,7 +88,7 @@ class Home extends Component<Props, State> {
       let cart = this.props.navigation.getParam('cart') ?? 0
       return (
         <View style={{flex:1}} >
-        <View style={{flex:1,borderWidth:0,flexDirection:'row',borderRadius:0}}>
+        <View style={{flex:1,flexDirection:'row'}}>
           <TouchableOpacity style={{backgroundColor:colors.headerColor,flex:1,justifyContent:'center'}} onPress={()=> {
              this.props.navigation.setParams({cart: cart - 100});
             this.setState({change : !this.state.change})}}><Icon name="minus" type="MaterialCommunityIcons" style={{color:'white'}} /></TouchableOpacity>
@@ -158,12 +144,7 @@ class Home extends Component<Props, State> {
               <Text style={{fontFamily:fonts.primaryFont,color:colors.textColor,fontWeight:'bold'}}>
                  Damacana Su
                </Text>
-               <Text style={{fontFamily:fonts.primaryFont,marginTop:10,color:colors.textColor}}>
-                 19 Tl
-               </Text>
-               <Text style={{fontFamily:fonts.primaryFont,marginTop:10,color:colors.textColor,fontWeight:'300'}}>
-                 Açıklama : 19 litre olarak verilecektir.
-               </Text>
+               
                </View>
 
             <View style={{height:'100%'}}>
@@ -174,6 +155,21 @@ class Home extends Component<Props, State> {
           }}
           
         />
+        <View style={{position:"absolute",bottom:0,left:0,right:0,backgroundColor:colors.containerBgSecond,flexDirection:'row',paddingTop:10,paddingHorizontal:10,paddingBottom:10,justifyContent:'space-between'}}>
+        <View style={{flexDirection:'row'}}>
+        <Text style={{fontFamily:fonts.primaryFont,fontWeight:'600',fontSize:18,alignSelf:'center'}}>
+            TOPLAM:
+        </Text>
+        <Text style={{fontFamily:fonts.primaryFont,alignSelf:'center',marginLeft:5}}>
+        150,99 TL
+        </Text>
+        </View>
+       <TouchableOpacity onPress={()=> this.props.navigation.navigate('CustomeInfo')}
+        style={{flexDirection:'row',backgroundColor:colors.headerColor,borderRadius:5,padding:5}}>
+           <Icon name="cart" style={{color:'white'}} />
+           <Text style={{alignSelf:'center',marginLeft:10,color:'white'}}>Alışverişi Tamamla</Text>
+       </TouchableOpacity>
+        </View>
       </View>
     );
   }
@@ -196,4 +192,4 @@ function bindToAction(dispatch: any) {
 export default connect(
   mapStateToProps,
   bindToAction
-)(Home);
+)(CartScreen);
