@@ -95,22 +95,27 @@ const MainStack = createBottomTabNavigator(
       screen: HomeStack,
       navigationOptions: {
         tabBarLabel: 'Ürünler',
+        tabBarOptions: {
+          labelStyle: {
+            color:colors.headerColor
+          },
+        },
         tabBarIcon: ({ focused }) => {
 
           return (
   focused ? 
-  <TouchableWithoutFeedback>
+
 <Image
 style={{width:24,height:24}}
-source={require('../assets/dairy-products.png')}
+source={require('../assets/plastic-4.png')}
 />
-  </TouchableWithoutFeedback>
-  : <TouchableWithoutFeedback>
+
+  :
   <Image
   style={{width:24,height:24}}
-  source={require('../assets/milk.png')}
+  source={require('../assets/plastic-5.png')}
   />
-    </TouchableWithoutFeedback>
+
           )
         }
       }
@@ -119,22 +124,53 @@ source={require('../assets/dairy-products.png')}
       screen: cartStack,
       navigationOptions: {
         tabBarLabel: 'Sepet',
-        // tabBarIcon: ({ focused }) => {
-        //   return (
-        //     <Icon name="ios-basket" style={{ color: focused ? "#2069F3" : "" }}  ></Icon>
-        //   )
-        // }
+        tabBarOptions: {
+          labelStyle: {
+            color:colors.headerColor
+          },
+        },
+
+        tabBarIcon: ({ focused }) => {
+
+          return (
+  focused ? 
+
+<Image
+style={{width:24,height:24}}
+source={require('../assets/shopping-cart.png')}
+/>
+
+  :
+  <Image
+  style={{width:24,height:24}}
+  source={require('../assets/shopping-cart-2.png')}
+  />)}
       }
     },
     Order: {
       screen: OrderStack,
       navigationOptions: {
         tabBarLabel: 'Siparişlerim',
-        // tabBarIcon: ({ focused }) => {
-        //   return (
-        //     <Icon name="ios-basket" style={{ color: focused ? "#2069F3" : "" }}  ></Icon>
-        //   )
-        // }
+        tabBarOptions: {
+          labelStyle: {
+            color:colors.headerColor
+          },
+        },
+        tabBarIcon: ({ focused }) => {
+
+          return (
+  focused ? 
+
+<Image
+style={{width:24,height:24}}
+source={require('../assets/order-2.png')}
+/>
+
+  :
+  <Image
+  style={{width:24,height:24}}
+  source={require('../assets/checklist.png')}
+  />)}
       }
     },
   },

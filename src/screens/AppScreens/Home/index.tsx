@@ -72,7 +72,7 @@ class Home extends Component<Props, State> {
       headerTitleStyle: {
         fontWeight: '600',
         fontFamily: 'Avenir Next',
-        fontSize: 25
+        fontSize: 50
       },
 
     },

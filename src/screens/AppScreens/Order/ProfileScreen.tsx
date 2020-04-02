@@ -63,11 +63,11 @@ class ProfileScreen extends Component<Props, State> {
       backgroundColor: colors.headerColor,
       height: 100,
 
-      headerTitleStyle: {
-        fontWeight: '600',
-        fontFamily: 'Avenir Next',
-        fontSize: 18
-      },
+    //   headerTitleStyle: {
+    //     fontWeight: '600',
+    //     fontFamily: 'Avenir Next',
+    //     fontSize: 18
+    //   },
 
     },
 
